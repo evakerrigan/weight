@@ -1,6 +1,11 @@
 import Chart from "chart.js/auto";
 
-import { dataWeightMarch, dataWeightApril } from "./data";
+import {
+  dataWeightMarch,
+  dataWeightApril,
+  dataWeightMay,
+  dataWeightJune,
+} from "./data";
 
 function generateLabels(startDate, endDate) {
   let currentDate = new Date(startDate);
@@ -8,32 +13,24 @@ function generateLabels(startDate, endDate) {
   let labels = [];
 
   while (currentDate <= end) {
-    // labels.push(currentDate.toLocaleDateString()); // Форматируем дату в строку
-    labels.push(currentDate.toLocaleString('default', { month: 'long' })); 
-    currentDate.setDate(currentDate.getDate() + 1); // Переходим к следующему дню
+    labels.push(currentDate.toLocaleDateString());
+    currentDate.setDate(currentDate.getDate() + 1);
   }
 
   return labels;
 }
 
-// Используйте эту функцию для генерации меток для всего периода
-// const startDate = "2024-03-01"; // Начало периода
-// const endDate = "2024-04-30"; // Конец периода
-// const allMonthsLabels = generateLabels(startDate, endDate);
-
-const labelsMarch = generateLabels("2024-03-01", "2024-03-31");
-const labelsApril = generateLabels("2024-04-01", "2024-04-30");
-const allMonthsLabels = [...labelsMarch, ...labelsApril];
-
+const startDate = "2024-03-01";
+const endDate = "2024-06-30";
+const allMonthsLabels = generateLabels(startDate, endDate);
 
 new Chart(document.getElementById("myChart"), {
   type: "line",
   data: {
-    labels: allMonthsLabels, // Используйте общий массив меток
+    labels: allMonthsLabels,
     datasets: [
       {
         label: "Вес в марте",
-        // data: dataWeightMarch,
         data: dataWeightMarch.map((value, index) => ({
           x: allMonthsLabels[index],
           y: value,
@@ -42,9 +39,31 @@ new Chart(document.getElementById("myChart"), {
       },
       {
         label: "Вес в апреле",
-        // data: dataWeightApril,
         data: dataWeightApril.map((value, index) => ({
           x: allMonthsLabels[index + dataWeightMarch.length],
+          y: value,
+        })),
+        // Дополнительные настройки датасета
+      },
+      {
+        label: "Вес в мае",
+        data: dataWeightMay.map((value, index) => ({
+          x: allMonthsLabels[
+            index + dataWeightMarch.length + dataWeightApril.length
+          ],
+          y: value,
+        })),
+        // Дополнительные настройки датасета
+      },
+      {
+        label: "Вес в июне",
+        data: dataWeightJune.map((value, index) => ({
+          x: allMonthsLabels[
+            index +
+              dataWeightMarch.length +
+              dataWeightApril.length +
+              dataWeightMay.length
+          ],
           y: value,
         })),
         // Дополнительные настройки датасета
@@ -52,15 +71,15 @@ new Chart(document.getElementById("myChart"), {
     ],
   },
   options: {
-    scales: {    
+    scales: {
       y: {
-        type: "linear", // Указываем, что хотим использовать линейный масштаб
-        position: "left", // Опционально, указывает положение масштаба
-        beginAtZero: true, // Масштаб начинается с нуля
-        min: 58, // Минимальное значение
-        max: 63, // Максимальное значение
+        type: "linear",
+        position: "left",
+        beginAtZero: true,
+        min: 58,
+        max: 63,
         ticks: {
-          stepSize: 1, // Размер шага между делениями
+          stepSize: 1,
         },
       },
     },
