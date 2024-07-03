@@ -52,13 +52,7 @@ new Chart(document.getElementById("myChart"), {
     ],
   },
   options: {
-    scales: {
-    //   x: {
-    //     type: "time", // Укажите тип масштаба, если работаете с датами
-    //     time: {
-    //       unit: "month",
-    //     },
-    //   },
+    scales: {    
       y: {
         type: "linear", // Указываем, что хотим использовать линейный масштаб
         position: "left", // Опционально, указывает положение масштаба
@@ -73,8 +67,8 @@ new Chart(document.getElementById("myChart"), {
   },
 });
 
-// const ctx = document.getElementById('myChart').getContext('2d');
-// new Chart(ctx, {
+// const ctx2 = document.getElementById('myChart').getContext('2d');
+// new Chart(ctx2, {
 //     type: 'bar',
 //     data: {
 //         labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль'],
