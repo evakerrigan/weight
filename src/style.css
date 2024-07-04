@@ -1,5 +1,16 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  /* background-color: aquamarine; */
+}
+
+.heightChart {
+  height: 300px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+#myChart {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ee0000;
 }
