@@ -100,18 +100,18 @@ new Chart(document.getElementById("myChart"), {
         borderColor: "rgba(153, 102, 255, 1)",
         borderWidth: 2,
       },
-      {
-        type: "bar",
-        label: "еще",
-        data: dataMarch.concat(dataApril, dataMay, dataJune, dataJuly).map((date) => ({
-          x: date,
-          y: 62,
-          mode: "markers",
-          marker: {
-            color: "gray",
-          },
-        })),
-      },
+    //   {
+    //     type: "bar",
+    //     label: "еще",
+    //     data: dataMarch.concat(dataApril, dataMay, dataJune, dataJuly).map((date) => ({
+    //       x: date,
+    //       y: 62,
+    //       mode: "markers",
+    //       marker: {
+    //         color: "gray",
+    //       },
+    //     })),
+    //   },
     ],
   },
   options: {
